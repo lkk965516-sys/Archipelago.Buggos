@@ -426,3 +426,22 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# --- BepInEx / game mod additions ---
+# Game-derived assemblies (copyrighted, never commit)
+libs/
+lib/
+interop/
+GameAssemblies/
+
+# Local BepInEx output and config (the .cfg holds your AP server, slot and password)
+BepInEx/
+*.cfg
+
+# Game saves and test saves
+saves/
+*.sav
+
+# Packaged mod zips (publish these through GitHub Releases instead)
+*.zip
+dist/
