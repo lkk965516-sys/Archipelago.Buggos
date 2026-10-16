@@ -34,7 +34,8 @@ Currently the only goal is to **beat every mission in the game**. Clearing the f
 
 1. Install BepInEx 6 (IL2CPP) into your Buggos folder.
 2. Download the latest release and place `Archipelago.Buggos.dll` in `BepInEx/plugins/`.
-3. Launch the game once so the config file is generated.
+3. place `HarmonyModPlugin` in `BepInEx/config/`.
+4. Launch the game once so the config file is generated.
 
 <!-- Adjust the steps and file names to match your release. -->
 
@@ -91,7 +92,7 @@ You don't need to install any extra libraries or game files. The release zip alr
    SlotName = YourSlotName
    Password =
 ```
-3. Start the game and
+3. Start the game and choose **New Game** or **Continue** to connect.
 
 ## Connecting to an Archipelago Server
 
@@ -127,4 +128,4 @@ Requires the game's interop assemblies (from `BepInEx/interop`) and the [Archipe
 
 ## Credits
 
-<!-- Your name, the Archipelago community, etc. -->
+Iggy and the Archipelago community.
