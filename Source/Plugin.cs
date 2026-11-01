@@ -3,6 +3,7 @@ using BepInEx;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using HarmonyModBuggos;
+using ArchipelagoBuggos;
 
 namespace HarmonyModPlugin;
 
