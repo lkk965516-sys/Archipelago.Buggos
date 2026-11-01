@@ -1,14 +1,17 @@
 # Archipelago.Buggos
 
-A [BepInEx](https://github.com/BepInEx/BepInEx) (IL2CPP) mod that lets **Buggos** be played as an [Archipelago](https://archipelago.gg) client. Archipelago is a multiworld randomizer framework. For more information, visit the website or join the Discord.
+A [BepInEx](https://github.com/BepInEx/BepInEx) (IL2CPP) mod that lets **Buggos** be played as an [Archipelago](https://archipelago.gg) client. Archipelago is a multiworld randomizer framework: your Buggos progress sends items to other players' games, and their progress sends items to yours. For more information, visit the website or join the Discord.
 
-> **Status:** early development. Only the **campaign** is supported. Survival and challenges are not implemented.
+
+**This is the game-side mod.** The Archipelago world that generates your randomizer is in [Archipelago.Buggos-World](https://github.com/lkk965516-sys/Archipelago.Buggos-World). You need both.
 
 ## Gameplay
 
 **Checks** are sent when you:
 - beat a mission for the first time
 - collect evolution points
+
+There are **161 locations** in total.
 
 **Items** in the pool are:
 - every evolution tree talent
@@ -24,108 +27,79 @@ A [BepInEx](https://github.com/BepInEx/BepInEx) (IL2CPP) mod that lets **Buggos*
 | Leave Mission | Kicks you out of the current mission |
 | Lock Swarmer | Temporarily locks the Swarmer (default 120 s) |
 
-Trap durations can be changed in the config file.
+Trap durations can be changed in the [config file](#configuration). The item names shown by the server (for example "Set Damage to Zero for 30s") are fixed text and don't change with the config.
 
 ## Achieving Victory
 
-Currently the only goal is to **beat every mission in the game**. Clearing the final area triggers the victory cutscene and completes your goal.
+The goal is to **beat every mission in the game**. Clearing the final area triggers the victory cutscene and completes your goal.
 
-## Installation
+## What you need
 
-1. Install BepInEx 6 (IL2CPP) into your Buggos folder.
-2. Download the latest release and place `Archipelago.Buggos.dll` in `BepInEx/plugins/`.
-3. place `HarmonyModPlugin` in `BepInEx/config/`.
-4. Launch the game once so the config file is generated.
-
-<!-- Adjust the steps and file names to match your release. -->
-
-## Example YAML
-
-A YAML for this game looks as follows:
-
-```yaml
-name: Player{number}
-game: Buggos
-Buggos:
-  # options go here
-```
-
-<!-- Fill in your real options once the apworld is finalised. -->
-
-## How to Play
-
-### What you need
 - A copy of **Buggos** (Steam, PC)
-- **BepInEx 6 (IL2CPP, 64-bit)**. Get it from the [BepInEx releases page](https://github.com/BepInEx/BepInEx/releases). Use the **Unity IL2CPP x64** build.
-- The latest **Archipelago.Buggos** release zip from this repository's Releases page
-- The [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) launcher, to generate a game and host a server (or a friend hosting for you)
+- **BepInEx 6 (IL2CPP, 64-bit)**. Get the **Unity IL2CPP x64** build from the [BepInEx releases page](https://github.com/BepInEx/BepInEx/releases).
+- The latest **Archipelago.Buggos** zip from this repository's [Releases](https://github.com/lkk965516-sys/Archipelago.Buggos/releases) page
+- The [Archipelago](https://github.com/ArchipelagoMW/Archipelago/releases) launcher (0.6.8 or newer), plus the `buggos.apworld` and YAML template from the [world's releases](https://github.com/lkk965516-sys/Archipelago.Buggos-World/releases), to generate a game. You can also have a friend host it for you.
 
-You don't need to install any extra libraries or game files. The release zip already includes the Archipelago client library.
+You don't need to install any extra libraries. The release already includes the Archipelago client library.
 
-### Installing the mod
+## Installing the mod
+
 1. **Install BepInEx.** Extract the BepInEx zip into your Buggos game folder, so that `BepInEx/` and `winhttp.dll` sit next to `Buggos.exe`.
    (To find the folder in Steam: right-click Buggos → Manage → Browse local files.)
-2. **Run the game once, then close it.** BepInEx uses this first launch to set itself up and generate its support files. This can take a minute or two, so wait for the game window to appear.
-3. **Install the mod.** Extract the release zip into the `BepInEx/plugins/` folder. You should end up with something like:
-```
+2. **Run the game once, then close it.** BepInEx uses this first launch to set itself up. This can take a minute or two, so wait for the game window to appear.
+3. **Install the mod.** Open the `Buggos` folder inside the release zip and copy its contents into your Buggos game folder. Allow Windows to merge the existing `BepInEx` folders if prompted. You should end up with:
+   ```
    Buggos/
    ├─ Buggos.exe
    └─ BepInEx/
+      ├─ config/
+      │  └─ HarmonyModPlugin.cfg
       └─ plugins/
-         └─ Archipelago.Buggos/
-            ├─ Archipelago.Buggos.dll
-            └─ Archipelago.MultiClient.Net.dll
-```
-4. **Run the game again.** This creates the mod's config file in `BepInEx/config/`.
+         └─ ArchipelagoBuggos/
+            ├─ ArchipelagoBuggos.dll
+            ├─ Archipelago.MultiClient.Net.dll
+            └─ Newtonsoft.Json.dll
+   ```
+4. **Launch the game.**
 
-### Setting up your game
-1. Install the Buggos `.apworld` into your Archipelago launcher.
-2. Make your YAML (see [Example YAML](#example-yaml)) and put it in your Archipelago `Players` folder.
+If you're updating from an earlier version and already have a `HarmonyModPlugin.cfg`, keep it to preserve your settings.
+
+## Setting up your game
+
+1. Install the Buggos `.apworld` into your Archipelago launcher (see the [world README](https://github.com/lkk965516-sys/Archipelago.Buggos-World#installation)).
+2. Make your YAML and put it in your Archipelago `Players` folder.
 3. Generate the game and host it, or give the YAML to whoever is hosting.
 
-### Connecting
-1. Close the game and open `BepInEx/config/<plugin GUID>.cfg` in a text editor.
-2. Fill in the `[Archipelago]` section:
-```ini
-   [Archipelago]
-   Server = archipelago.gg:38281
-   SlotName = YourSlotName
-   Password =
-```
-3. Start the game and choose **New Game** or **Continue** to connect.
+## Connecting
 
-## Connecting to an Archipelago Server
+**In game:** at the main menu, press **F8** to open the connection window. Enter the server (`host:port`), your slot name and the password if there is one, and connect. Then choose **New Game** or **Continue**. Press F8 again to hide the window.
 
-You first need an Archipelago server running. Instructions for hosting one are on [archipelago.gg](https://archipelago.gg).
-
-> **Note:** the in-game connection menu is not finished yet. For now, connect by editing the config file.
-
-Edit `BepInEx/config/<your plugin GUID>.cfg`:
+**Config file:** you can also set your details in `BepInEx/config/HarmonyModPlugin.cfg`:
 
 ```ini
 [Archipelago]
-Server = localhost:38281
-SlotName = Bug1
+Server = archipelago.gg:38281
+Slotname = YourSlotName
 Password =
 ```
 
-Then start the game and choose **New Game** or **Continue**. 
+To connect automatically a few seconds after launch, set `ConnectOnStart = true` in the `[Connection]` section.
 
-*Planned:* a mod config menu will appear when you press New Game or Continue, with fields for server, slot name and password. Leaving the server blank, or disabling Archipelago, will start the normal game.
-
-### Save files
+## Save files
 
 The mod keeps **one game save per slot** by swapping save files when you connect, and makes a backup first. This is controlled by the `[Saves]` section of the config.
 
-## Known Issues
+Your received items and sent checks are stored per slot and seed in `BepInEx/BuggosAPWorld/`, so you can quit and resume without losing items or re-sending checks.
 
-- Traps are untested.
-- Location names are matched against the server on login. If the log reports fewer than 161 resolved locations, set `LocationClearFormat` and `LocationPointFormat` in the config.
+## Building from source
 
-## Building
+Building needs the game's interop assemblies (from `BepInEx/interop`, created after the first launch with BepInEx), so you need a copy of Buggos with BepInEx installed.
 
-Requires the game's interop assemblies (from `BepInEx/interop`) and the [Archipelago.MultiClient.Net](https://github.com/ArchipelagoMW/Archipelago.MultiClient.Net) package.
+1. Set the `BUGGOS_GAME_DIR` environment variable to your Buggos folder.
+2. Build `Source/HarmonyModPlugin.csproj` (.NET 6). The build copies the plugin into `BepInEx/plugins` automatically.
+
+Requires the [Archipelago.MultiClient.Net](https://github.com/ArchipelagoMW/Archipelago.MultiClient.Net) package (restored automatically).
 
 ## Credits
 
-Iggy and the Archipelago community.
+Iggy and the Archipelago community. The connection handling was adapted from an existing Archipelago mod for a different game.
