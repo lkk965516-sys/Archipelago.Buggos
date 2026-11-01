@@ -8,9 +8,9 @@ $env:BUGGOS_GAME_DIR = "C:\ect" -->
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
-    <AssemblyName>HarmonyModPlugin</AssemblyName>
-    <RootNamespace>HarmonyModPlugin</RootNamespace>
-    <Product>My first plugin</Product>
+    <AssemblyName>ArchipelagoBuggos</AssemblyName>
+    <RootNamespace>ArchipelagoBuggos</RootNamespace>
+    <Product>Archipelago Buggos</Product>
     <Version>1.0.0</Version>
 
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -25,9 +25,9 @@ $env:BUGGOS_GAME_DIR = "C:\ect" -->
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-    <PackageReference Include="Archipelago.MultiClient.Net" Version="6.*" />
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.788" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
+    <PackageReference Include="Archipelago.MultiClient.Net" Version="6.7.1" />
   </ItemGroup>
 
   <ItemGroup>
