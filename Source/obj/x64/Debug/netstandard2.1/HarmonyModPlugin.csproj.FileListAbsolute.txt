@@ -1,4 +1,0 @@
-C:\Users\lkk96\Documents\bugs\modding\MissionOverLogging\HarmonyModPlugin\obj\x64\Debug\netstandard2.1\HarmonyModPlugin.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\lkk96\Documents\bugs\modding\MissionOverLogging\HarmonyModPlugin\obj\x64\Debug\netstandard2.1\HarmonyModPlugin.AssemblyInfoInputs.cache
-C:\Users\lkk96\Documents\bugs\modding\MissionOverLogging\HarmonyModPlugin\obj\x64\Debug\netstandard2.1\HarmonyModPlugin.AssemblyInfo.cs
-C:\Users\lkk96\Documents\bugs\modding\MissionOverLogging\HarmonyModPlugin\obj\x64\Debug\netstandard2.1\HarmonyModPlugin.csproj.CoreCompileInputs.cache
